@@ -5,6 +5,9 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { z } from 'zod'
+import { FieldsetGroup } from '../ui/FieldsetGroup'
+import { InputField } from '../ui/InputField'
+import { PrimaryButton } from '../ui/PrimaryButton'
 
 const schema = z.object({
   to_address: z.object({
@@ -55,49 +58,46 @@ export default function LabelForm() {
   return (
     <div className="space-y-6">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <fieldset>
-          <legend>To Address</legend>
-          <input placeholder="Street" {...register('to_address.street1')} />
-          <input placeholder="City" {...register('to_address.city')} />
-          <input placeholder="State" {...register('to_address.state')} />
-          <input placeholder="ZIP" {...register('to_address.zip')} />
-        </fieldset>
+        <FieldsetGroup legend="To Address">
+          <InputField label="Street" {...register('to_address.street1')} />
+          <InputField label="City" {...register('to_address.city')} />
+          <InputField label="State" {...register('to_address.state')} />
+          <InputField label="ZIP" {...register('to_address.zip')} />
+        </FieldsetGroup>
 
-        <fieldset>
-          <legend>From Address</legend>
-          <input placeholder="Street" {...register('from_address.street1')} />
-          <input placeholder="City" {...register('from_address.city')} />
-          <input placeholder="State" {...register('from_address.state')} />
-          <input placeholder="ZIP" {...register('from_address.zip')} />
-        </fieldset>
+        <FieldsetGroup legend="From Address">
+          <InputField label="Street" {...register('from_address.street1')} />
+          <InputField label="City" {...register('from_address.city')} />
+          <InputField label="State" {...register('from_address.state')} />
+          <InputField label="ZIP" {...register('from_address.zip')} />
+        </FieldsetGroup>
 
-        <fieldset>
-          <legend>Package</legend>
-          <input
+        <FieldsetGroup legend="Package">
+          <InputField
+            label="Length (in)"
             type="number"
-            placeholder="Length"
             {...register('parcel.length', { valueAsNumber: true })}
           />
-          <input
+          <InputField
+            label="Width (in)"
             type="number"
-            placeholder="Width"
             {...register('parcel.width', { valueAsNumber: true })}
           />
-          <input
+          <InputField
+            label="Height (in)"
             type="number"
-            placeholder="Height"
             {...register('parcel.height', { valueAsNumber: true })}
           />
-          <input
+          <InputField
+            label="Weight (oz)"
             type="number"
-            placeholder="Weight (oz)"
             {...register('parcel.weight', { valueAsNumber: true })}
           />
-        </fieldset>
+        </FieldsetGroup>
 
-        <button type="submit" disabled={mutation.isPending}>
+        <PrimaryButton type="submit" disabled={mutation.isPending}>
           {mutation.isPending ? 'Generating...' : 'Generate Label'}
-        </button>
+        </PrimaryButton>
       </form>
 
       {labelUrl && (
