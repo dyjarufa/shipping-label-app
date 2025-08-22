@@ -4,13 +4,13 @@ export async function createShipment(data: any) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ shipment: data }),
-  });
+    body: JSON.stringify(data),
+  })
 
   if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error?.error?.message || 'Erro ao gerar etiqueta');
+    const error = await response.json()
+    throw new Error(error?.error?.message || 'Erro ao gerar etiqueta')
   }
 
-  return response.json();
+  return response.json()
 }
