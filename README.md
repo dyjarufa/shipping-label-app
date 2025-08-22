@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+// Mantemos o código da aplicação como está e agora adicionamos os arquivos auxiliares:
 
-## Getting Started
+// 📄 README.md
+/*
+# 📦 USPS Shipping Label Generator
 
-First, run the development server:
+This project is a take-home challenge to build a web application that generates and prints USPS shipping labels using the [EasyPost API](https://www.easypost.com/).
+
+---
+
+## 🚀 Quickstart
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Create .env.local file and add your EasyPost key
+cp .env.example .env.local
+
+# Start development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000/label-generator](http://localhost:3000/label-generator) with your browser to see the result.
+Open http://localhost:3000/label-generator
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✅ Features
 
-## Learn More
+- ✅ Built with **Next.js 14 App Router**, React 18 and TypeScript
+- ✅ Validated form using **react-hook-form + Zod**
+- ✅ Uses **React Query** for mutation and state handling
+- ✅ **Composition pattern** for inputs and layouts
+- ✅ Custom API route for secure EasyPost access (avoids CORS)
+- ✅ TailwindCSS for utility-first styling
+- ✅ Toast feedback with `react-toastify`
+- ✅ **Fully tested** with `@testing-library/react` + Jest
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📬 Assumptions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Only addresses from the United States are accepted
+- Only one rate/label is selected (the first USPS one returned)
+- Only one label is created at a time
+- Sandbox mode is used (no real labels are charged)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💡 What I'd do with more time
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Add unit tests for API errors and success mocks
+- Add i18n (internationalization support)
+- Create success/failure views with icons
+- Style the layout responsively for mobile
+- Add loading skeleton or animation for label preview
+- Handle multiple rates and allow user selection
+
+---
+
+## 📁 Project Structure (Highlights)
+
+```
+src/
+├─ app/label-generator           # Page and layout
+├─ app/api/shipments             # API route to EasyPost
+├─ components/ui                 # Composable input components
+├─ features/label/api            # Local hook for createShipment()
+├─ styles/                       # Tailwind setup
+```
+
+---
+
+## 🔐 Environment Variables
+
+Add your EasyPost key to `.env.local`:
+
+```env
+EASYPOST_API_KEY=EASYPOST_API_KEY_HERE
+```
+*/
+
+
+// 📄 .env.example
+/*
+# EasyPost Sandbox Key
+EASYPOST_API_KEY=EASYPOST_API_KEY_HERE
+*/
