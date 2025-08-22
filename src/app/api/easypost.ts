@@ -4,7 +4,7 @@ export async function createShipment(data: any) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify({ shipment: data }),
   });
 
   if (!response.ok) {
